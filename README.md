@@ -28,6 +28,7 @@ quantity, condition, and general comments.\
 ● Users can choose to be notified of new postings.
 
 Expected Value:\
+
 Tangible:\
 ● Increased visibility and sales by at least 10% for student-run small businesses on campus.\
 ● Reduce double posting (i.e. buyers and sellers of the same product making posts) by at least 30%.
@@ -38,13 +39,16 @@ Intangible:\
 ● No spam posts on RoR / female RoR.\
 ● Bidding system to allow fairer pricing.
 
-Special Issues or Constraints:\
+Special Issues or Constraints:
+
 Special Issues:\
 ● Each user is both a seller and a buyer.\
 ● No feasible way to verify items posted.\
-● Logging in through SSO requires authorization from NYU-AD.\
+● Logging in through SSO requires authorization from NYU-AD.
+
 Time Constraints:\
-● System must be delivered within the next 3 months.\
+● System must be delivered within the next 3 months.
+
 Technical Constraints:\
 ● System requires a large database to handle the high volume of users.\
 ● System must work cross-platform, since every user has a different set of devices.

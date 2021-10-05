@@ -27,7 +27,7 @@ quantity, condition, and general comments.\
 ● Users can choose to sell anonymously [or potentially to a certain subsection of users] (since people often choose to post on a gender-specific RoR).\
 ● Users can choose to be notified of new postings.
 
-Expected Value:\
+Expected Value:
 
 Tangible:\
 ● Increased visibility and sales by at least 10% for student-run small businesses on campus.\

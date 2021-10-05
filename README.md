@@ -11,9 +11,9 @@ important information. Furthermore, although people post requests of items requi
 are being sold, the buyer and the seller often do not have a chance to connect with each other. Such a
 system can help link the buyer and the seller and be mutually beneficial.
  
-Functionality:
-● Users can log in through SSO (or Google+).
-● Users can post items they wish to sell – for each item, they can fill out a description, e.g. size,
+Functionality:\
+● Users can log in through SSO (or Google+).\
+● Users can post items they wish to sell – for each item, they can fill out a description, e.g. size,\
 quantity, condition, and general comments.
 ● Users can post services they provide (including small on-campus businesses) as products.
 ● Users can post about the sale of other NYU-AD specific products such as Falcon Dirhams or

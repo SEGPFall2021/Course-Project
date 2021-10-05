@@ -25,18 +25,18 @@ quantity, condition, and general comments.\
 ● Users can contact one another through a chat system (or via contact info listed on their profile).\
 ● Users can rate and view previous ratings of their experience with the buyer/seller.\
 ● Users can choose to sell anonymously [or potentially to a certain subsection of users] (since people often choose to post on a gender-specific RoR).\
-● Users can choose to be notified of new postings.\
+● Users can choose to be notified of new postings.
 
 Expected Value:\
 Tangible:\
 ● Increased visibility and sales by at least 10% for student-run small businesses on campus.\
-● Reduce double posting (i.e. buyers and sellers of the same product making posts) by at least 30%.\
+● Reduce double posting (i.e. buyers and sellers of the same product making posts) by at least 30%.
 
 Intangible:\
 ● Centralized system → better user experience; easier trading.\
 ● Accountability for users in terms of buyers not showing up after committing to buy.\
 ● No spam posts on RoR / female RoR.\
-● Bidding system to allow fairer pricing.\
+● Bidding system to allow fairer pricing.
 
 Special Issues or Constraints:\
 Special Issues:\
@@ -47,4 +47,4 @@ Time Constraints:\
 ● System must be delivered within the next 3 months.\
 Technical Constraints:\
 ● System requires a large database to handle the high volume of users.\
-● System must work cross-platform, since every user has a different set of devices.\
+● System must work cross-platform, since every user has a different set of devices.

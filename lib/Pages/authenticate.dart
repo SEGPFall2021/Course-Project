@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_signin_button/button_builder.dart';
-import 'package:nyutrade1/firebase_config.dart';
+import 'package:nyutrade/firebase_config.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import './register_page.dart';

@@ -1,6 +1,6 @@
 //Home Page of the app --> needs to be change because rn this is authorization page
 import 'package:flutter/material.dart';
-import 'package:nyutrade1/constants/constants.dart';
+import 'package:nyutrade/constants/constants.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key}) : super(key: key);

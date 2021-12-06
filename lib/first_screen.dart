@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nyutrade/login_page.dart';
 import 'package:nyutrade/sign_in.dart';
+import 'package:nyutrade/create_post.dart';
+import 'package:nyutrade/create_post_v2.dart';
 
 class FirstScreen extends StatelessWidget {
   @override
@@ -73,7 +75,15 @@ class FirstScreen extends StatelessWidget {
                 elevation: 5,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(40)),
-              )
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pushAndRemoveUntil(MaterialPageRoute(builder: (context) {return CreatePostV2();}), ModalRoute.withName('/'));
+                },
+                child: Text(
+                    'Create Post'
+                ),
+              ),
             ],
           ),
         ),

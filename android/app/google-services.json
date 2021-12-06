@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "892102216572",
+    "project_id": "nyu-trade-2021",
+    "storage_bucket": "nyu-trade-2021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892102216572:android:1a0e23254d644496f4f2f9",
+        "android_client_info": {
+          "package_name": "com.example.nyutrade"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "892102216572-hijh4tphc2241loqvsqol90dl24jb6rf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.nyutrade",
+            "certificate_hash": "c45756942076c92631781c38dd5b2d7fc48788ff"
+          }
+        },
+        {
+          "client_id": "892102216572-lhug7bc71t606j4euus5rlmbmise8vuf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLnU1cP-xzr6gPAwXE0saP0SMZouc7kVY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "892102216572-lhug7bc71t606j4euus5rlmbmise8vuf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

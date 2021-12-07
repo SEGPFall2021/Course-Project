@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nyutrade/sign_in.dart';
 
@@ -9,6 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,8 +22,9 @@ class _LoginPageState extends State<LoginPage> {
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlutterLogo(size: 150),
-              SizedBox(height: 50),
+              Image(image: AssetImage("assets/images/nyutrade_logo_whitebg.png"), height: (MediaQuery.of(context).size.height)/6, fit: BoxFit.cover),
+              Text("a virtual marketplace for the nyu abu dhabi community"),
+              SizedBox(height: 20,),
               _signInButton(),
             ],
           ),
@@ -45,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
           }
         });
       },
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       highlightElevation: 0,
       borderSide: BorderSide(color: Colors.grey),
       child: Padding(
@@ -54,13 +58,17 @@ class _LoginPageState extends State<LoginPage> {
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            //Image(image: AssetImage("assets/google_logo.png"), height: 35.0),
+            CircleAvatar(
+                radius: 15,
+                backgroundImage: AssetImage("assets/images/nyu_thumbnail.png")
+            ),
             Padding(
               padding: const EdgeInsets.only(left: 10),
               child: Text(
-                'Sign in with Google',
+                'Sign in with SSO',
                 style: TextStyle(
-                  fontSize: 20,
+                  fontSize: 15,
+                  fontWeight: FontWeight.w300,
                   color: Colors.grey,
                 ),
               ),

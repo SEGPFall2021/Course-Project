@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:nyutrade/main.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
@@ -10,15 +11,6 @@ String email = '';
 String imageUrl = '';
 
 Future<String?> signInWithGoogle() async {
-  await Firebase.initializeApp(
-    // Replace with actual values
-    options: FirebaseOptions(
-      apiKey: "AIzaSyBLnU1cP-xzr6gPAwXE0saP0SMZouc7kVY",
-      appId: "1:892102216572:web:5a2b8ed301f02aabf4f2f9",
-      messagingSenderId: "892102216572",
-      projectId: "nyu-trade-2021",
-    ),
-  );;
 
   final GoogleSignInAccount? googleSignInAccount = await googleSignIn.signIn();
   final GoogleSignInAuthentication googleSignInAuthentication =
@@ -58,7 +50,6 @@ Future<String?> signInWithGoogle() async {
 
     return '$user';
   }
-
   return null;
 }
 

@@ -1,6 +1,18 @@
-2021/12/06-17:15:49.227 fd03 Creating DB /private/var/folders/s5/wkbdtx_10f38b9jrw2lz9w8h0000gn/T/flutter_tools.uEikGt/flutter_tools_chrome_device.4gH94x/Default/IndexedDB/http_localhost_5000.indexeddb.leveldb since it was missing.
-2021/12/06-17:15:49.294 fd03 Reusing MANIFEST /private/var/folders/s5/wkbdtx_10f38b9jrw2lz9w8h0000gn/T/flutter_tools.uEikGt/flutter_tools_chrome_device.4gH94x/Default/IndexedDB/http_localhost_5000.indexeddb.leveldb/MANIFEST-000001
-2021/12/06-17:15:49.401 10b03 Level-0 table #5: started
-2021/12/06-17:15:49.463 10b03 Level-0 table #5: 615 bytes OK
-2021/12/06-17:15:49.534 10b03 Delete type=0 #3
-2021/12/06-17:15:49.560 10b03 Manual compaction at level-0 from '\x00\x01\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x02\x00\x00\x00' @ 0 : 0; will stop at (end)
+2021/12/07-01:32:36.267 11003 Reusing MANIFEST /private/var/folders/s5/wkbdtx_10f38b9jrw2lz9w8h0000gn/T/flutter_tools.moqx0T/flutter_tools_chrome_device.VDphhp/Default/IndexedDB/http_localhost_5000.indexeddb.leveldb/MANIFEST-000001
+2021/12/07-01:32:36.268 11003 Recovering log #14
+2021/12/07-01:32:36.268 11003 Reusing old log /private/var/folders/s5/wkbdtx_10f38b9jrw2lz9w8h0000gn/T/flutter_tools.moqx0T/flutter_tools_chrome_device.VDphhp/Default/IndexedDB/http_localhost_5000.indexeddb.leveldb/000014.log 
+2021/12/07-01:32:36.268 11003 Delete type=0 #7
+2021/12/07-01:32:36.268 11003 Delete type=0 #4
+2021/12/07-01:32:36.268 11003 Delete type=0 #10
+2021/12/07-01:32:36.268 11003 Delete type=2 #12
+2021/12/07-01:32:36.268 11003 Delete type=2 #8
+2021/12/07-01:32:36.440 10103 Level-0 table #19: started
+2021/12/07-01:32:36.464 10103 Level-0 table #19: 16640 bytes OK
+2021/12/07-01:32:36.516 10103 Delete type=0 #14
+2021/12/07-01:32:36.537 10103 Manual compaction at level-0 from '\x00\x07\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at '\x00\x07\x00\x00\x05' @ 385 : 1
+2021/12/07-01:32:36.538 10103 Compacting 1@0 + 1@1 files
+2021/12/07-01:32:36.569 10103 Generated table #20@0: 89 keys, 4645 bytes
+2021/12/07-01:32:36.570 10103 Compacted 1@0 + 1@1 files => 4645 bytes
+2021/12/07-01:32:36.663 10103 compacted to: files[ 0 1 1 0 0 0 0 ]
+2021/12/07-01:32:36.664 10103 Delete type=2 #19
+2021/12/07-01:32:36.665 10103 Manual compaction at level-0 from '\x00\x07\x00\x00\x05' @ 385 : 1 .. '\x00\x08\x00\x00\x00' @ 0 : 0; will stop at (end)

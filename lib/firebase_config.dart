@@ -8,13 +8,14 @@ class DefaultFirebaseConfig {
     if (kIsWeb) {
       // Web
       return const FirebaseOptions(
-        apiKey: 'AIzaSyAgUhHU8wSJgO5MVNy95tMT07NEjzMOfz0',
-        appId: '1:448618578101:web:0b650370bb29e29cac3efc',
-        messagingSenderId: '448618578101',
-        projectId: 'react-native-firebase-testing',
-        authDomain: 'react-native-firebase-testing.firebaseapp.com',
+        apiKey: 'AIzaSyBLnU1cP-xzr6gPAwXE0saP0SMZouc7kVY',
+        appId: '1:892102216572:web:5a2b8ed301f02aabf4f2f9',
+        messagingSenderId: '892102216572',
+        projectId: 'nyu-trade-2021',
+        authDomain: 'nyu-trade-2021.firebaseio.com',
       );
-    } else if (Platform.isIOS || Platform.isMacOS) {
+    }
+    else if (Platform.isIOS || Platform.isMacOS) {
       // iOS and MacOS
       return const FirebaseOptions(
         apiKey: 'AIzaSyAHAsf51D0A407EklG1bs-5wA7EbyfNFg0',

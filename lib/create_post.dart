@@ -5,9 +5,12 @@ import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:async';
 import 'package:firebase/firebase.dart' as fb;
+import 'package:nyutrade/tabs.dart';
+
 import 'first_screen_v2.dart';
 
 XFile? pickedFile;
+String? id;
 
 class CreatePost extends StatefulWidget {
   @override
@@ -20,7 +23,7 @@ class _CreatePostState extends State<CreatePost> {
   var dropdownValue;
 
   void addData(String section, String prodName, String prodDescrip, String price, String type) {
-    databaseRef.child(section).set({'name': prodName, 'description': prodDescrip, 'price': price, 'client': auth.currentUser!.uid, 'type': type});
+    databaseRef.child(section).push().set({'name': prodName, 'description': prodDescrip, 'price': price, 'client': auth.currentUser!.uid, 'type': type});
   }
 
   final _prodNameFieldKey = GlobalKey<FormFieldState>();
@@ -87,14 +90,14 @@ class _CreatePostState extends State<CreatePost> {
                       setState(() {
                         dropdownValue = newValue!;
                       });
-                    },
+                      },
                     items: <String>['PRODUCT', 'SERVICE', 'MONEY EXCHANGE']
                         .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        }).toList(),
                   ),
                   TextFormField(
                     key: _prodNameFieldKey,
@@ -137,8 +140,8 @@ class _CreatePostState extends State<CreatePost> {
                     ],
                     decoration: const InputDecoration(
                       icon: Icon(Icons.attach_money),
-                      hintText: 'Price',
-                      labelText: 'Price',
+                      hintText: 'Price (in AED)',
+                      labelText: 'Price (in AED)',
                     ),
                     onSaved: (String? value) {
                       // optional block of code:
@@ -175,7 +178,7 @@ class _CreatePostState extends State<CreatePost> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
-                                return FirstScreen();
+                                return Tabs();
                               },
                             ),
                           );
@@ -299,7 +302,7 @@ class _CreatePostState extends State<CreatePost> {
                           Navigator.of(context).push(
                             MaterialPageRoute(
                               builder: (context) {
-                                return FirstScreen();
+                                return Tabs();
                               },
                             ),
                           );
@@ -345,7 +348,7 @@ chooseImage() async {
 
 Future<Uri> uploadImageFile(XFile? image,
     {required String imageName}) async {
-  fb.StorageReference storageRef = fb.storage().ref('images/$imageName');
+  fb.StorageReference storageRef = fb.storage().ref("id");
   fb.UploadTaskSnapshot uploadTaskSnapshot = await storageRef.put(image).future;
 
   Uri imageUri = await uploadTaskSnapshot.ref.getDownloadURL();

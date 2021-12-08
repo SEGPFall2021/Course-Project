@@ -1,15 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:nyutrade/login_page.dart';
 import 'package:nyutrade/sign_in.dart';
 import 'package:flutter/rendering.dart';
 import 'package:nyutrade/create_post.dart';
-import 'package:nyutrade/userProfile.dart';
+import 'package:nyutrade/user_profile.dart';
 
-
-class FirstScreen extends StatelessWidget {
+class RequestPage extends StatelessWidget {
 
   final databaseRef = FirebaseDatabase.instance.reference();
   final FirebaseAuth auth = FirebaseAuth.instance;
@@ -19,63 +17,63 @@ class FirstScreen extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return Scaffold(
-      appBar: AppBar(
-        title: Image.asset("assets/images/nyutrade_logo_whitebg.png", height: AppBar().preferredSize.height),
-        backgroundColor: Colors.white,
-        automaticallyImplyLeading: false,
-        actions: <Widget>[
-          IconButton(
-            icon: const Icon(Icons.search, color: Colors.black38),
-            tooltip: 'Search',
-            onPressed: () {
-              // Navigator.push(context, MaterialPageRoute<void>(
-              //   builder: (BuildContext context) {
-              //     return Scaffold(
-              //       appBar: AppBar(
-              //         title: const Text('Next page'),
-              //       ),
-              //       body: const Center(
-              //         child: Text(
-              //           'This is the next page',
-              //           style: TextStyle(fontSize: 24),
-              //         ),
-              //       ),
-              //     );
-              //   },
-              // ));
-            },
-          ),
-          SizedBox(width: 10,),
-          PopupMenuButton<int>(
-            icon: const Icon(Icons.person, color: Colors.black38),
-            elevation: 20,
-            tooltip: 'Profile Options',
-            itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
-              const PopupMenuItem<int>(
-                value: 1,
-                child: Text('My Profile'),
-              ),
-              const PopupMenuItem<int>(
-                value: 2,
-                child: Text('Log Out'),
-              ),
-            ],
-            onSelected: (value) {
-              if(value == 1){
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {return UserProfile();}));
-              } else if (value == 2) {
-                signOutGoogle();
-                Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();}));
-              }
-            },
-          ),
-          SizedBox(width: 20,),
-        ],
-      ),
+      // appBar: AppBar(
+      //   title: Image.asset("assets/images/nyutrade_logo_whitebg.png", height: AppBar().preferredSize.height),
+      //   backgroundColor: Colors.white,
+      //   automaticallyImplyLeading: false,
+      //   actions: <Widget>[
+      //     IconButton(
+      //       icon: const Icon(Icons.search, color: Colors.black38),
+      //       tooltip: 'Search',
+      //       onPressed: () {
+      //         // Navigator.push(context, MaterialPageRoute<void>(
+      //         //   builder: (BuildContext context) {
+      //         //     return Scaffold(
+      //         //       appBar: AppBar(
+      //         //         title: const Text('Next page'),
+      //         //       ),
+      //         //       body: const Center(
+      //         //         child: Text(
+      //         //           'This is the next page',
+      //         //           style: TextStyle(fontSize: 24),
+      //         //         ),
+      //         //       ),
+      //         //     );
+      //         //   },
+      //         // ));
+      //       },
+      //     ),
+      //     SizedBox(width: 10,),
+      //     PopupMenuButton<int>(
+      //       icon: const Icon(Icons.person, color: Colors.black38),
+      //       elevation: 20,
+      //       tooltip: 'Profile Options',
+      //       itemBuilder: (BuildContext context) => <PopupMenuEntry<int>>[
+      //         const PopupMenuItem<int>(
+      //           value: 1,
+      //           child: Text('My Profile'),
+      //         ),
+      //         const PopupMenuItem<int>(
+      //           value: 2,
+      //           child: Text('Log Out'),
+      //         ),
+      //       ],
+      //       onSelected: (value) {
+      //         if(value == 1){
+      //           Navigator.of(context).push(MaterialPageRoute(builder: (context) {return UserProfile();}));
+      //         } else if (value == 2) {
+      //           signOutGoogle();
+      //           Navigator.of(context).push(MaterialPageRoute(builder: (context) {return LoginPage();}));
+      //         }
+      //       },
+      //     ),
+      //     SizedBox(width: 20,),
+      //   ],
+      // ),
       body: StreamBuilder(
           stream: FirebaseDatabase.instance
               .reference()
-              .child("posts")
+              .child("requests")
               .onValue,
           builder: (BuildContext context, AsyncSnapshot<Event> snapshot) {
             if (snapshot.hasData) {
@@ -113,7 +111,7 @@ class FirstScreen extends StatelessWidget {
                                 SizedBox(height: 10,),
                                 Text(map.values.toList()[index]["description"], style: TextStyle( fontWeight: FontWeight.w100, fontSize: 14),),
                                 SizedBox(height: 10,),
-                                Text(('AED ' + map.values.toList()[index]["price"]), style: TextStyle( fontWeight: FontWeight.w100, fontSize: 14),),
+                                Text(('budget: ~AED ' + map.values.toList()[index]["price"]), style: TextStyle( fontWeight: FontWeight.w100, fontSize: 14),),
                               ],
                             )
                         )
@@ -122,7 +120,10 @@ class FirstScreen extends StatelessWidget {
                 },
               );
             } else {
-              return CircularProgressIndicator();
+              return Container(
+                  alignment: Alignment.center,
+                  child: CircularProgressIndicator(),
+              );
             }
           }
       ),

@@ -13,7 +13,7 @@ Future<void> main() async {
       projectId: 'nyuad-trade-2021',
       messagingSenderId: '892102216572',
       appId: '1:892102216572:web:5a2b8ed301f02aabf4f2f9',
-      storageBucket: 'gs://nyu-trade-2021.appspot.com'
+      storageBucket: 'gs://nyu-trade-2021.appspot.com',
     ),
   );
   runApp(MaterialApp(

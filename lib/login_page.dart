@@ -1,7 +1,9 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:nyutrade/sign_in.dart';
-import 'listing_page.dart';
+import 'package:nyutrade/tabs.dart';
+
+import 'first_screen_v2.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -9,8 +11,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,7 +41,8 @@ class _LoginPageState extends State<LoginPage> {
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) {
-                  return FirstScreen();
+                  //return FirstScreen();
+                  return Tabs();
                 },
               ),
             );

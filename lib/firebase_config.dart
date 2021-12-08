@@ -24,12 +24,12 @@ class DefaultFirebaseConfig {
         projectId: 'react-native-firebase-testing',
         authDomain: 'react-native-firebase-testing.firebaseapp.com',
         iosBundleId: 'io.flutter.plugins.firebase.auth',
-        databaseURL: 'https://react-native-firebase-testing.firebaseio.com',
+        databaseURL: 'https://nyu-trade-2021-default-rtdb.firebaseio.com/',
         iosClientId:
         '448618578101-m53gtqfnqipj12pts10590l37npccd2r.apps.googleusercontent.com',
         androidClientId:
         '448618578101-26jgjs0rtl4ts2i667vjb28kldvs2kp6.apps.googleusercontent.com',
-        storageBucket: 'react-native-firebase-testing.appspot.com',
+        storageBucket: 'gs://nyu-trade-2021.appspot.com',
       );
     } else {
       // Android
@@ -39,7 +39,7 @@ class DefaultFirebaseConfig {
         messagingSenderId: '448618578101',
         projectId: 'react-native-firebase-testing',
         authDomain: 'react-native-firebase-testing.firebaseapp.com',
-        databaseURL: 'https://react-native-firebase-testing.firebaseio.com',
+        databaseURL: 'https://nyu-trade-2021-default-rtdb.firebaseio.com/',
         androidClientId:
         '448618578101-qd7qb4i251kmq2ju79bl7sif96si0ve3.apps.googleusercontent.com',
       );

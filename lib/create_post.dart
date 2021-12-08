@@ -1,9 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:nyutrade/sign_in.dart';
+import 'package:image_picker/image_picker.dart';
+import 'dart:async';
+import 'package:firebase/firebase.dart' as fb;
+import 'first_screen_v2.dart';
+
+XFile? pickedFile;
 
 class CreatePost extends StatefulWidget {
   @override
@@ -12,11 +16,11 @@ class CreatePost extends StatefulWidget {
 
 class _CreatePostState extends State<CreatePost> {
   final databaseRef = FirebaseDatabase.instance.reference();
-
   final FirebaseAuth auth = FirebaseAuth.instance;
+  var dropdownValue;
 
-  void addData(String section, String prodName, String prodDescrip, String price) {
-    databaseRef.child(section).child(auth.currentUser!.uid).push().set({'name': prodName, 'description': prodDescrip, 'price': price});
+  void addData(String section, String prodName, String prodDescrip, String price, String type) {
+    databaseRef.child(section).set({'name': prodName, 'description': prodDescrip, 'price': price, 'client': auth.currentUser!.uid, 'type': type});
   }
 
   final _prodNameFieldKey = GlobalKey<FormFieldState>();
@@ -67,7 +71,31 @@ class _CreatePostState extends State<CreatePost> {
                         CustomRadioButton("Request New Product", 2),
                       ]
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(height: 20,),
+                  DropdownButton<String>(
+                    value: dropdownValue,
+                    hint: Text('SELECT LISTING TYPE  '),
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.deepPurple),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                    items: <String>['PRODUCT', 'SERVICE', 'MONEY EXCHANGE']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
                   TextFormField(
                     key: _prodNameFieldKey,
                     controller: productNameController,
@@ -124,6 +152,16 @@ class _CreatePostState extends State<CreatePost> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
+                    child: ElevatedButton.icon(
+                      onPressed: () {
+                        chooseImage();
+                      },
+                      icon: Icon(Icons.image),
+                      label: const Text('Attach Image'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: ElevatedButton(
                       onPressed: () {
                         if (_prodNameFieldKey.currentState!.validate() &&
@@ -132,7 +170,15 @@ class _CreatePostState extends State<CreatePost> {
                           print(productNameController.text);
                           print(productDescriptionController.text);
                           print(priceController.text);
-                          addData('posts', productNameController.text, productDescriptionController.text, priceController.text);
+                          addData('posts', productNameController.text, productDescriptionController.text, priceController.text, (dropdownValue != null) ? dropdownValue : 'PRODUCT');
+                          if(pickedFile!=null) uploadImageFile(pickedFile!, imageName: "testImage");
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return FirstScreen();
+                              },
+                            ),
+                          );
                         }
                       },
                       child: const Text('POST'),
@@ -163,6 +209,30 @@ class _CreatePostState extends State<CreatePost> {
                       ]
                   ),
                   SizedBox(height: 10,),
+                  DropdownButton<String>(
+                    value: dropdownValue,
+                    hint: Text('SELECT LISTING TYPE  '),
+                    icon: const Icon(Icons.arrow_downward),
+                    iconSize: 24,
+                    elevation: 16,
+                    style: const TextStyle(color: Colors.deepPurple),
+                    underline: Container(
+                      height: 2,
+                      color: Colors.deepPurpleAccent,
+                    ),
+                    onChanged: (String? newValue) {
+                      setState(() {
+                        dropdownValue = newValue!;
+                      });
+                    },
+                    items: <String>['PRODUCT', 'SERVICE', 'MONEY EXCHANGE']
+                        .map<DropdownMenuItem<String>>((String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    }).toList(),
+                  ),
                   TextFormField(
                     key: _prodNameFieldKey,
                     controller: productNameController,
@@ -200,7 +270,7 @@ class _CreatePostState extends State<CreatePost> {
                     controller: priceController,
                     keyboardType: TextInputType.number,
                     inputFormatters: [
-                      FilteringTextInputFormatter.allow(RegExp('[0-9]'))
+                      FilteringTextInputFormatter.allow(RegExp('[0-9 .]'))
                     ],
                     decoration: const InputDecoration(
                       icon: Icon(Icons.attach_money),
@@ -225,6 +295,14 @@ class _CreatePostState extends State<CreatePost> {
                           print(productNameController.text);
                           print(productDescriptionController.text);
                           print(priceController.text);
+                          addData('requests', productNameController.text, productDescriptionController.text, priceController.text, (dropdownValue != null) ? dropdownValue : 'PRODUCT');
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) {
+                                return FirstScreen();
+                              },
+                            ),
+                          );
                         }
                       },
                       child: const Text('POST'),
@@ -257,4 +335,19 @@ class _CreatePostState extends State<CreatePost> {
         )
     );
   }
+}
+
+chooseImage() async {
+  pickedFile = await ImagePicker().pickImage(
+    source: ImageSource.gallery,
+  );
+}
+
+Future<Uri> uploadImageFile(XFile? image,
+    {required String imageName}) async {
+  fb.StorageReference storageRef = fb.storage().ref('images/$imageName');
+  fb.UploadTaskSnapshot uploadTaskSnapshot = await storageRef.put(image).future;
+
+  Uri imageUri = await uploadTaskSnapshot.ref.getDownloadURL();
+  return imageUri;
 }
